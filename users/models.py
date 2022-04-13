@@ -2,6 +2,7 @@ from tkinter import CASCADE
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
+from Products.models import ProductMeta
 import uuid 
 
 # Create your models here.
@@ -33,17 +34,27 @@ class Address(models.Model):
 class Cart(models.Model):
     id = models.UUIDField(default=uuid.uuid4,unique=True,primary_key=True,editable=False)
     customer = models.ForeignKey(Customer,on_delete=models.CASCADE,null = True, blank = True)
-    # products = models.ForeignKey(ProductMeta,)
+    products = models.ForeignKey(ProductMeta,on_delete=models.PROTECT,null=True,blank=True,verbose_name = _("Products in Cart"))
 
     class Meta:
         verbose_name = str("Cart")
         verbose_name_plural = ("Carts")
 
     def __str__(self):
-        return self.customer.id
+        return str(self.customer.username)
     
     # Get More Info on get_absolute_url
     # def get_absolute_url(self):
     #     return reverse("Cart_detail", kwargs={"pk": self.pk})
 
 
+class ProductReviews(models.Model):
+    """
+    Reviews for the products in shop
+    """
+    product = models.ForeignKey(ProductMeta,on_delete=models.PROTECT)
+    customer = models.ForeignKey(Customer,related_name="customer",on_delete=models.PROTECT)
+    review = models.TextField(max_length=500,unique=False,blank=False,null=False,editable=True,)
+
+    def __str__(self):
+        return str(self.customer.username)

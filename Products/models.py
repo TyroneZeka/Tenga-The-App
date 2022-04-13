@@ -36,6 +36,10 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True,editable=False,verbose_name=_("date product created"),help_text=_("format: Y-m-d H:M:S"))
     updated_at = models.DateTimeField(auto_now=True,verbose_name=_("date product last updated"),help_text=_("format: Y-m-d H:M:S"))
 
+    @property
+    def product_category(self):
+        catg = self.category.all()
+        return(self.category.all())
     def __str__(self):
         return self.name
 
@@ -61,12 +65,17 @@ class ProductType(models.Model):
     def __str__(self):
         return self.name
 
+    
+
 
 class Brand(models.Model):
     """
     Product brand table
     """
     name = models.CharField(max_length=255,unique=True,null=False,blank=False,verbose_name=_("brand name"),help_text=_("format: required, unique, max-255"))
+
+    def __str__(self):
+        return str(self.name)
 
 
 class ProductAttributeValue(models.Model):
@@ -101,6 +110,22 @@ class ProductMeta(models.Model):
     created_at = models.DateTimeField(auto_now_add=True,editable=False,verbose_name=_("date sub-product created"),help_text=_("format: Y-m-d H:M:S"))
     updated_at = models.DateTimeField(auto_now=True,verbose_name=_("date sub-product updated"),help_text=_("format: Y-m-d H:M:S"))
 
+    @property
+    def producttype(self):
+        return str(self.producttype.name)
+
+    @property
+    def Brand(self):
+        return str(self.brand.name)
+
+    @property
+    def Attributes(self):
+        return(self.attribute_values.all())
+
+    class Meta:
+        verbose_name = str("Product Meta")
+        verbose_name_plural = ("Product Meta")
+        
     def __str__(self):
         return self.product.name
 
@@ -141,6 +166,10 @@ class ProductAttributeValues(models.Model):
     class Meta:
         unique_together = (("attributevalues", "productmeta"),)
 
+    @property
+    def AttributeValue(self):
+        return(self.attributevalues.attribute_value)
+
 
 class ProductTypeAttribute(models.Model):
     """
@@ -152,3 +181,4 @@ class ProductTypeAttribute(models.Model):
 
     class Meta:
         unique_together = (("product_attribute", "product_type"),)
+

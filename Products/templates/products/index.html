@@ -1,12 +1,16 @@
-{% extends 'main.html' %}
+{% extends 'products/main.html' %}
 {% load static %}
+
+{% block customcss %}
+<link rel="stylesheet" href="{% static 'products/css/home.css' %}">
+{% endblock customcss %} 
 
 {% block content %}
 
 <!-- hero section -->
 <header class="hero-section">
     <div class="content">
-        <img src="{% static 'img/light-logo.png' %}" class="logo" alt="">
+        <img src="{% static 'products/img/light-logo.png' %}" class="logo" alt="">
         <p class="sub-heading">The Better Choice</p>
     </div>
 </header>
@@ -14,13 +18,13 @@
 <!-- cards-container -->
 <section class="product">
     <h2 class="product-category">best selling</h2>
-    <button class="pre-btn"><img src="{% static 'img/arrow.png' %}" alt=""></button>
-    <button class="nxt-btn"><img src="{% static 'img/arrow.png' %}" alt=""></button>
+    <button class="pre-btn"><img src="{% static 'products/img/arrow.png' %}" alt=""></button>
+    <button class="nxt-btn"><img src="{% static 'products/img/arrow.png' %}" alt=""></button>
     <div class="product-container">
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card1.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card1.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -32,7 +36,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card2.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card2.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -44,7 +48,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card3.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card3.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -56,7 +60,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card4.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card4.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -68,7 +72,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card5.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card5.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -80,7 +84,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card6.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card6.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -92,7 +96,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card7.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card7.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -104,7 +108,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card8.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card8.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -119,15 +123,15 @@
 <!-- collections -->
 <section class="collection-container">
     <a href="#" class="collection">
-        <img src="{% static 'img/women-collection.png' %}" alt="">
+        <img src="{% static 'products/img/women-collection.png' %}" alt="">
         <p class="collection-title">women <br> apparels</p>
     </a>
     <a href="#" class="collection">
-        <img src="{% static 'img/men-collection.png' %}" alt="">
+        <img src="{% static 'products/img/men-collection.png' %}" alt="">
         <p class="collection-title">men <br> apparels</p>
     </a>
     <a href="#" class="collection">
-        <img src="{% static 'img/accessories-collection.png' %}" alt="">
+        <img src="{% static 'products/img/accessories-collection.png' %}" alt="">
         <p class="collection-title">accessories</p>
     </a>
 </section>
@@ -135,13 +139,13 @@
  <!-- card-container -->
  <section class="product">
     <h2 class="product-category">Shirts</h2>
-    <button class="pre-btn"><img src="{% static 'img/arrow.png' %}" alt=""></button>
-    <button class="nxt-btn"><img src="{% static 'img/arrow.png' %}" alt=""></button>
+    <button class="pre-btn"><img src="{% static 'products/img/arrow.png' %}" alt=""></button>
+    <button class="nxt-btn"><img src="{% static 'products/img/arrow.png' %}" alt=""></button>
     <div class="product-container">
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card5.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card5.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -153,7 +157,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card6.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card6.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -165,7 +169,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card7.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card7.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -177,7 +181,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card8.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card8.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -189,7 +193,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card9.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card9.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -201,7 +205,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card9.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card9.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -213,7 +217,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card10.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card10.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -225,7 +229,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card12.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card12.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -240,13 +244,13 @@
 <!-- card-container -->
 <section class="product">
     <h2 class="product-category">Shoes</h2>
-    <button class="pre-btn"><img src="{% static 'img/arrow.png' %}" alt=""></button>
-    <button class="nxt-btn"><img src="{% static 'img/arrow.png' %}" alt=""></button>
+    <button class="pre-btn"><img src="{% static 'products/img/arrow.png' %}" alt=""></button>
+    <button class="nxt-btn"><img src="{% static 'products/img/arrow.png' %}" alt=""></button>
     <div class="product-container">
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card9.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card9.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -258,7 +262,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card10.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card10.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -270,7 +274,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card11.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card11.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -282,7 +286,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card12.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card12.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -294,7 +298,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card1.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card1.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -306,7 +310,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card2.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card2.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -318,7 +322,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card3.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card3.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -330,7 +334,7 @@
         <div class="product-card">
             <div class="product-image">
                 <span class="discount-tag">50% off</span>
-                <img src="{% static 'img/card4.png' %}" class="product-thumb" alt="">
+                <img src="{% static 'products/img/card4.png' %}" class="product-thumb" alt="">
                 <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
@@ -342,4 +346,10 @@
     </div>
 </section>
 
+{% include 'products/footer.html' %}
+
 {% endblock content %}
+
+{% block customjs %}
+<script src="{% static 'products/js/home.js' %}"></script>
+{% endblock customjs %}

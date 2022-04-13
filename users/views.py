@@ -64,3 +64,8 @@ def updateProfile(request):
     context = {}
 
     return render(request,'users/my-account.html',context)
+
+
+def cart(request):
+    context = {}
+    return render(request,'users/cart.html',context)

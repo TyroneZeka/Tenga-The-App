@@ -15,7 +15,6 @@ def createCustomer(sender,instance,created,**kwargs):
             lastName = user.last_name,
             email = user.email,
         )
-    print('createCustomer function run!!')
         # implement send_mail for when a new customer reegisters. 
         # TODO: if admin, no need for mail but only new customers.
 
@@ -28,7 +27,7 @@ def updateCustomer(sender,instance,created,**kwargs):
         user.first_name = customer.firstName
         user.last_name = customer.lastName
         user.email = customer.email
-    print('updateCustomer func run!!!')
+    
 
 @receiver(post_save,sender = Customer)
 def createCustomerCart(sender,instance,created,**kwargs):
