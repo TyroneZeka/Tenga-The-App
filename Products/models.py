@@ -136,7 +136,7 @@ class Media(models.Model):
     """
 
     product_meta = models.ForeignKey(ProductMeta,on_delete=models.PROTECT,related_name="media_product_meta")
-    image = models.ImageField(unique=False,null=False,blank=False,verbose_name=_("product image"),upload_to="images/products",default="images/default.png",help_text=_("format: required, default-default.png"))
+    image = models.ImageField(unique=False,null=False,blank=False,verbose_name=_("product image"),upload_to="images/products",default="images/products/default.png",help_text=_("format: required, default-default.png"))
     alt_text = models.CharField(max_length=255,unique=False,null=False,blank=False,verbose_name=_("alternative text"),help_text=_("format: required, max-255"))
     is_feature = models.BooleanField(default=False,verbose_name=_("product default image"),help_text=_("format: default=false, true=default image"))
     created_at = models.DateTimeField(auto_now_add=True,editable=False,verbose_name=_("product visibility"),help_text=_("format: Y-m-d H:M:S"))
