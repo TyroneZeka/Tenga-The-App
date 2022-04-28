@@ -1,6 +1,6 @@
 from dataclasses import fields
 from django.contrib import admin
-from .models import Category, Product, ProductMeta
+from . import models
 from users.models import Customer
 from django import forms
 
@@ -22,7 +22,7 @@ class ProductForm(forms.BaseModelForm):
         self.fields['name'].help_text = 'My Help Text'
 
     class Meta:
-        model = Product
+        model = models.Product
         exclude = ('',)
 
 # for product filtering
@@ -40,6 +40,7 @@ class ProductMetaAdmin(admin.ModelAdmin):
 
 
 
-products_admin_site.register(Product,ProductsAdmin)
-products_admin_site.register(Category)
-products_admin_site.register(ProductMeta,ProductMetaAdmin)
+products_admin_site.register(models.Product,ProductsAdmin)
+products_admin_site.register(models.Media)
+products_admin_site.register(models.Category)
+products_admin_site.register(models.ProductMeta,ProductMetaAdmin)

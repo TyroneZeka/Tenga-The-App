@@ -1,55 +1,81 @@
+{% extends 'products/base.html' %}
 {% load static %}
-       <!-- Footer Start -->
-       <link rel="stylesheet" href="{% static 'products/css/footer.css' %}">
-       <footer>
-        <div class="footer-content">
-            <img src="{% static 'products/img/light-logo.png' %}" class="logo" alt="">
-            <div class="footer-ul-container">
-                <ul class="category">
-                    <li class="category-title">men</li>
-                    <li><a href="#" class="footer-link">t-shirts</a></li>
-                    <li><a href="#" class="footer-link">sweatshirts</a></li>
-                    <li><a href="#" class="footer-link">shirts</a></li>
-                    <li><a href="#" class="footer-link">jeans</a></li>
-                    <li><a href="#" class="footer-link">trousers</a></li>
-                    <li><a href="#" class="footer-link">shoes</a></li>
-                    <li><a href="#" class="footer-link">casuals</a></li>
-                    <li><a href="#" class="footer-link">formals</a></li>
-                    <li><a href="#" class="footer-link">sports</a></li>
-                    <li><a href="#" class="footer-link">watch</a></li>
-                </ul>
-                <ul class="category">
-                    <li class="category-title">women</li>
-                    <li><a href="#" class="footer-link">t-shirts</a></li>
-                    <li><a href="#" class="footer-link">sweatshirts</a></li>
-                    <li><a href="#" class="footer-link">shirts</a></li>
-                    <li><a href="#" class="footer-link">jeans</a></li>
-                    <li><a href="#" class="footer-link">trousers</a></li>
-                    <li><a href="#" class="footer-link">shoes</a></li>
-                    <li><a href="#" class="footer-link">casuals</a></li>
-                    <li><a href="#" class="footer-link">formals</a></li>
-                    <li><a href="#" class="footer-link">sports</a></li>
-                    <li><a href="#" class="footer-link">watch</a></li>
-                </ul>
+
+{% block customcss %}
+    <!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="{% static 'products/css/bootstrap.min.css' %}"/>
+{% endblock customcss %}
+
+{% block content %}
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+    <div class="row px-xl-5 pt-5">
+        <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+            <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
+            <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebum tempor no vero est magna amet no</p>
+            <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+            <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+            <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+        </div>
+        <div class="col-lg-8 col-md-12">
+            <div class="row">
+                <div class="col-md-4 mb-5">
+                    <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                        <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                        <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
+                    <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Your Email Address">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary">Sign Up</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
+                    <div class="d-flex">
+                        <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <p class="footer-title">about company</p>
-        <p class="info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat tempore ad suscipit, eos eius quisquam sed optio nisi quaerat fugiat ratione et vero maxime praesentium, architecto minima reiciendis iste quo deserunt assumenda alias ducimus. Ullam odit maxime id voluptates rerum tenetur corporis laboriosam! Cum error ipsum laborum tempore in rerum necessitatibus nostrum nobis modi! Debitis adipisci illum nemo aperiam sed, et accusamus ut officiis. Laborum illo exercitationem quo culpa reprehenderit excepturi distinctio tempore cupiditate praesentium nisi ut iusto, assumenda perferendis facilis voluptas autem fuga sunt ab debitis voluptatum harum eum. Asperiores, natus! Est deserunt incidunt quasi placeat omnis, itaque harum?</p>
-        <p class="info">support emails - help@clothing.com, customersupport@clothing.com</p>
-        <p class="info">telephone - 180 00 00 001, 180 00 00 002</p>
-        <div class="footer-social-container">
-            <div>
-                <a href="#" class="social-link">terms & services</a>
-                <a href="#" class="social-link">privacy page</a>
-            </div>
-            <div>
-                <a href="#" class="social-link">instagram</a>
-                <a href="#" class="social-link">facebook</a>
-                <a href="#" class="social-link">twitter</a>
-            </div>
+    </div>
+    <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="col-md-6 px-xl-0">
+            <p class="mb-md-0 text-center text-md-left text-secondary">
+                &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
+                by
+                <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
+            </p>
         </div>
-        <p class="footer-credit">Clothing, Best apparels online store</p>
-       </footer>
-       
-    <!-- Footer End -->
-    
+        <div class="col-md-6 px-xl-0 text-center text-md-right">
+            <img class="img-fluid" src="img/payments.png" alt="">
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+{% endblock content %}
