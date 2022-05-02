@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 from Base import settings
-from django.core import serializers
+from Checkout.models import DeliveryOptions
 from Products import models as productModels
 
 
@@ -18,7 +18,7 @@ class Cart:
             cart = self.session["skey"] = {}
         self.cart = cart
 
-    def add(self, product_meta, product_qty):
+    def add(self, product_meta, product_quantity):
         """
         Adding and updating products in cart session data
         """
@@ -32,13 +32,13 @@ class Cart:
         # print(product.media_product.filter(is_feature=True))
         product_sku = product_meta.sku
         if product_sku in self.cart:
-            self.cart[product_sku]["quantity"] = int(product_qty)
+            self.cart[product_sku]["quantity"] = int(product_quantity)
         else:
             # adding product attributes to cart, you choose what you want to add
             self.cart[product_sku] = {
                 "name": str(product_meta.product),
                 "price": str(product_meta.store_price),
-                "quantity": int(product_qty),
+                "quantity": int(product_quantity),
                 "image": str(media.image),
             }
 
@@ -91,11 +91,50 @@ class Cart:
         """
         return sum(item["quantity"] for item in self.cart.values())
 
-    def get_total_price(self):
+    def get_subtotal_price(self):
         """
         To get the sub_ total of the cart
         """
         return sum(
-            float(item["price"]) * int(item["quantity"])
+            Decimal(item["price"]) * int(item["quantity"])
             for item in self.cart.values()
         )
+
+    def get_delivery_price(self):
+        newprice = 0.00
+
+        if "purchase" in self.session:
+            newprice = DeliveryOptions.objects.get(
+                id=self.session["purchase"]["delivery_id"]
+            ).delivery_price
+
+        return newprice
+
+    def get_total_price(self):
+        newprice = 0.00
+        subtotal = sum(
+            Decimal(item["price"]) * item["quantity"]
+            for item in self.cart.values()
+        )
+        if "purchase" in self.session:
+            newprice = DeliveryOptions.objects.get(
+                id=self.session["purchase"]["delivery_id"]
+            ).delivery_price
+
+        total = subtotal + Decimal(newprice)
+        return total
+
+    def cart_update_delivery(self, deliveryprice=0):
+        subtotal = sum(
+            Decimal(item["price"]) * item["quantity"]
+            for item in self.cart.values()
+        )
+        total = subtotal + Decimal(deliveryprice)
+        return total
+
+    def clear(self):
+        # Remove cart from session
+        del self.session[settings.CART_SESSION_ID]
+        del self.session["address"]
+        del self.session["purchase"]
+        self.save()

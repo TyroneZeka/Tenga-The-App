@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "Products.apps.ProductsConfig",
     "Dashboard.apps.DashboardConfig",
     "Cart.apps.CartConfig",
+    "Orders.apps.OrdersConfig",
+    "Checkout.apps.CheckoutConfig",
 ]
 
 MIDDLEWARE = [
@@ -141,3 +143,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# PASSWORD_RESET_TIMEOUT_DAYS_

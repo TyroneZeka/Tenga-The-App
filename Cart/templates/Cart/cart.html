@@ -74,7 +74,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code">
                     <div class="input-group-append">
-                        <button class="btn btn-primary">Apply Coupon</button>
+                        <button class="btn btn-primary" disabled>Apply Coupon</button>
                     </div>
                 </div>
             </form>
@@ -96,7 +96,7 @@
                         <h5>Total</h5>
                         <div class = "d-inline-flex"><h5>$ </h5><h5 id = "total">{{cart.get_total_price}}</h5></div>
                     </div>
-                    <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                    <a href="{% url 'checkout:deliverychoices' %}" class="btn  btn-block btn-primary font-weight-bold my-3 py-3" role="button" aria-pressed="true">Proceed To Checkout</a>
                 </div>
             </div>
         </div>

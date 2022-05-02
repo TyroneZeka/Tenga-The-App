@@ -1,5 +1,4 @@
-from urllib import response
-
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from Products import models as productModels
@@ -25,7 +24,7 @@ def cart_add(request):
             .filter(attribute_values__attribute_value=product_color)
             .filter(attribute_values__attribute_value=product_size)
         ).first()
-        cart.add(product_meta=product_meta, product_qty=product_qty)
+        cart.add(product_meta=product_meta, product_quantity=product_qty)
         cart_quantity = cart.__len__()
         response = JsonResponse({"quantity": cart_quantity})
         return response

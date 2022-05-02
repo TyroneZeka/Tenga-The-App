@@ -1,0 +1,62 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'css/signup.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block content %}
+
+<section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              <form action="{% url 'users:signup' %}" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form__field form-outline mb-4">
+                  {{field}}
+                  {% for error in field.errors %}
+                  <p style="color: red;">{{error}}</p>
+                  {% endfor %}
+
+                </div>
+                {% endfor %}
+
+                <input type="checkbox" checked class="checkbox" id="terms-and-cond">
+                <label for="terms-and-cond">agree to our <a href="">terms and conditions</a></label>
+                <br>
+                <input type="checkbox" class="checkbox" id="notification">
+                <label for="notification">recieve upcoming offers and events mails</a></label>
+                <div>
+                  <input class="btn btn-primary" type="submit" value="Submit">
+                </div>
+
+                {% if messages %}
+                <div class="alert alert-warning" alert-{{ message.tags }} role="alert">
+                  {% for message in messages  %}
+                  {{message|safe|linebreaks}}
+                  {% endfor %}
+                </div>
+                {% endif %}
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% comment %} {% include 'footer.html' %} {% endcomment %}
+<script src="{% static 'js/form.js' %}"></script>
+{% endblock content %}

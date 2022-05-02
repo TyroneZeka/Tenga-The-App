@@ -1,0 +1,40 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<div class="col-6 mx-auto">
+  <h1 class="h3">Create/Edit Address</h1>
+  <div>Add a new delivery <b>address</b> and delivery preferences</div>
+  <hr />
+  <form name="address_form" class="account-form" method="post" enctype="multipart/form-data">
+    {% if form.errors %}
+    <div class="alert alert-primary" role="alert">
+      Error: Please try again!
+    </div>
+    {% endif %}
+    {% csrf_token %}
+    <label class="small font-weight-bold">{{ form.address1.label}}</label>
+            {{ form.address1 }}
+
+    <label class="small font-weight-bold">{{ form.address2.label}}</label>
+    {{ form.address2 }}
+    <label class="small font-weight-bold">{{ form.city.label}}</label>
+    {{ form.city }}
+    <label class="small font-weight-bold">{{ form.post_code.label}}</label>
+            {{ form.post_code }}
+    
+    <button class="btn btn-primary btn-block py-2 mb-4 mt-4 fw-bold w-100" type="button" value="Submit" onclick="submitForm()">
+    Add Address
+    </button>
+  </form>
+
+</div>
+
+<script> 
+function submitForm() {
+   var form = document.getElementsByName('address_form')[0];
+   form.submit(); // Submit the form
+   form.reset();  // Reset all form data
+   return false; // Prevent page refresh
+}
+</script>
+{% endblock %}

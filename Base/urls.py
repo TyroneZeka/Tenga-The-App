@@ -5,12 +5,14 @@ from django.urls import include, path
 from Products.admin import products_admin_site
 
 urlpatterns = [
-    # path('admin/', products_admin_site.urls),
-    path("shopadmin/", products_admin_site.urls),  # tenga-admin
-    path("users/", include("users.urls")),
+    # path("admin/", admin.site.urls),
+    path("admin/", products_admin_site.urls),  # tenga-admin
+    path("users/", include("users.urls", namespace="users")),
     path("", include("Products.urls")),
-    path("", include("Cart.urls", namespace="cart")),
+    path("checkout/", include("Checkout.urls", namespace="checkout")),
+    path("cart/", include("Cart.urls", namespace="cart")),
     path("shop-admin/", include("Dashboard.urls")),
+    path("orders/", include("Orders.urls", namespace="orders")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

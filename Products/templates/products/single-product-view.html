@@ -225,8 +225,8 @@
                         <div class="product-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="{% static 'img/product-3.jpg' %}" alt="">
                             <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href="{% url 'single-product-view' product.slug %}"><i class="fa fa-shopping-cart"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href="{% url 'single-product-view' product.slug %}"><i class="far fa-heart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href="{% url 'products:single-product-view' product.slug %}"><i class="fa fa-shopping-cart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href="{% url 'products:single-product-view' product.slug %}"><i class="far fa-heart"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
