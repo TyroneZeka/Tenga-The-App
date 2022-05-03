@@ -209,11 +209,12 @@ def set_default(request, id):
     if "delivery_address" in previous_url:
         return redirect("checkout:delivery_address")
 
-    return redirect("checkout:delivery_address")
+    return redirect(previous_url)
 
 
 @login_required(login_url="users:login")
 def user_orders(request):
-    user_id = request.user.id
-    orders = Order.objects.filter(user_id=user_id).filter(billing_status=True)
+    customer = Customer.objects.get(user=request.user)
+    orders = Order.objects.filter(user=customer).filter(billing_status=True)
+
     return render(request, "users/user_orders.html", {"orders": orders})

@@ -56,7 +56,7 @@ def cart_update(request):
         product = get_object_or_404(productModels.ProductMeta, sku=product_sku)
         cart.update(product, product_quantity)
         cart_quantity = cart.__len__()
-        total = cart.get_total_price()
+        total = cart.get_subtotal_price()
         # print(total)
         response = JsonResponse(
             {

@@ -4,7 +4,7 @@ from Cart.cart import Cart
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from Orders.models import Order, OrderItem
 from paypalcheckoutsdk.orders import OrdersGetRequest
 from users.models import Address, Customer
@@ -17,7 +17,7 @@ from .models import DeliveryOptions
 # Create your views here.
 @login_required(login_url="users:login")
 def deliverychoices(request):
-    if not bool(request.session["skey"]):
+    if not bool(request.session["cart"]):
         messages.success(request, "No Item in Cart!")
         return HttpResponseRedirect(request.META["HTTP_REFERER"])
     deliveryoptions = DeliveryOptions.objects.filter(is_active=True)
@@ -88,6 +88,7 @@ def payment_complete(request):
     customer = Customer.objects.get(user=request.user)
     requestorder = OrdersGetRequest(data)
     response = PPClient.client.execute(requestorder)
+    print(response.result.purchase_units[0].shipping.name.full_name)
     cart = Cart(request)
     order = Order.objects.create(
         user=customer,
@@ -127,4 +128,4 @@ def payment_complete(request):
 def payment_successful(request):
     cart = Cart(request)
     cart.clear()
-    return render(request, "checkout/payment_successful.html", {})
+    return redirect("users:user_orders")

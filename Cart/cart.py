@@ -13,9 +13,9 @@ class Cart:
 
     def __init__(self, request):
         self.session = request.session
-        cart = self.session.get("skey")
-        if "skey" not in request.session:
-            cart = self.session["skey"] = {}
+        cart = self.session.get("cart")
+        if "cart" not in request.session:
+            cart = self.session["cart"] = {}
         self.cart = cart
 
     def add(self, product_meta, product_quantity):
@@ -134,7 +134,7 @@ class Cart:
 
     def clear(self):
         # Remove cart from session
-        del self.session[settings.CART_SESSION_ID]
+        del self.session["cart"]
         del self.session["address"]
         del self.session["purchase"]
         self.save()

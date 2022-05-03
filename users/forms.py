@@ -1,10 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import (
-    AuthenticationForm,
-    PasswordResetForm,
-    SetPasswordForm,
-    UserCreationForm,
-)
+from django.contrib.auth.forms import (AuthenticationForm, PasswordResetForm,
+                                       SetPasswordForm, UserCreationForm)
 from django.contrib.auth.models import User
 
 from . import models
@@ -23,18 +19,37 @@ class CustomUserCreationForm(UserCreationForm):
         ]
 
     def __init__(self, *args, **kwargs):
-        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
-        self.fields["first_name"].widget.attrs["placeholder"] = "First Name"
-        self.fields["last_name"].widget.attrs["placeholder"] = "Last Name"
-        self.fields["email"].widget.attrs["placeholder"] = "Email"
-        self.fields["username"].widget.attrs["placeholder"] = "Username"
-        self.fields["password1"].widget.attrs["placeholder"] = "Password"
-        self.fields["password2"].widget.attrs[
-            "placeholder"
-        ] = "Confirm PAssword"
-
-        for name, field in self.fields.items():
-            field.widget.attrs.update({"class": "input"})
+        super().__init__(*args, **kwargs)
+        self.fields["first_name"].widget.attrs = {
+            "placeholder": "First Name",
+            "class": "form-control mb-3",
+            "id": "form-firstname",
+        }
+        self.fields["last_name"].widget.attrs = {
+            "placeholder": "Last Name",
+            "class": "form-control mb-3",
+            "id": "form-lastname",
+        }
+        self.fields["email"].widget.attrs = {
+            "placeholder": "Email",
+            "class": "form-control mb-3",
+            "id": "form-email",
+        }
+        self.fields["username"].widget.attrs = {
+            "placeholder": "Username",
+            "class": "form-control mb-3",
+            "id": "form-username",
+        }
+        self.fields["password1"].widget.attrs = {
+            "placeholder": "Password",
+            "class": "form-control mb-3",
+            "id": "form-password1",
+        }
+        self.fields["password2"].widget.attrs = {
+            "placeholder": "Confirm Password",
+            "class": "form-control mb-3",
+            "id": "form-password2",
+        }
 
 
 class UserEditForm(forms.ModelForm):

@@ -94,7 +94,7 @@
   </div>
 {% include 'products/footer.html' %}
 
-<script src="https://www.paypal.com/sdk/js?client-id=AffSe9pBjD5LzUGrNBPEVbAvHGjq8bDMf8aqH0MDXGZrpkmsUoQgCcKDRHaurgWes86K4N6Omo8n6R11&currency=USD"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AffSe9pBjD5LzUGrNBPEVbAvHGjq8bDMf8aqH0MDXGZrpkmsUoQgCcKDRHaurgWes86K4N6Omo8n6R11"></script>
     <script>
 
       function getCookie(name) {
@@ -113,35 +113,44 @@
       }
       var csrftoken = getCookie('csrftoken');
     
-
-      paypal.Buttons({
-        createOrder: (data, actions) => {
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: '{{cart.get_total_price}}', // Can also reference a variable or function
-                currency_code: "USD"
-              }
-            }]
-          });
-        },
-        // Finalize the transaction after payer approval
-        onApprove: (data, actions) => {
-          var url = "{% url 'checkout:payment_complete' %}"
-          return fetch(url,{
-            method: 'POST',
-            headers:{
-              'content-type': 'application/json',
-              'X-CSRFToken': csrftoken,
-            },
-            body: JSON.stryingfy({
-              orderID:data.orderID
+      function initPayPalButton() {
+        paypal.Buttons({
+          style: {
+            shape: 'rect',
+            color: 'gold',
+            layout: 'vertical',
+            label: 'paypal',
+    
+          },
+        createOrder: function (data, actions) {
+            return actions.order.create({
+              purchase_units: [{
+                "amount": {
+                  "currency_code": "USD",
+                  "value": '{{cart.get_total_price}}'
+                }
+              }]
+            });
+          },
+        onApprove: function (data) {
+            var url = "{% url 'checkout:payment_complete' %}"
+            return fetch(url, {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json',
+                'X-CSRFToken': csrftoken,
+              },
+              body: JSON.stringify({
+                orderID: data.orderID
+              })
+            }).then(function () {
+              location.href = '{% url 'checkout:payment_successful' %}';
             })
-          }).then(function(){
-            location.href = '{% url 'checkout:payment_successful' %}';
-          })
-        }
-      }).render('#paypal-button-container');
+          },
+        }).render('#paypal-button-container');
+      }
+      initPayPalButton();
+
     </script>
 
 {% endblock %}

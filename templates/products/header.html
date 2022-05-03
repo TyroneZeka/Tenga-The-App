@@ -45,14 +45,13 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                {% if page == 'index' %}
-                <form action="">
+                {% if page == 'index' or page == 'search' %}
+                <form id = "searchForm" action="{% url 'products:search-view' %}" method = "get">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
+                        <input type="text" class="form-control" placeholder="Search for products" name="query" value={{search_query}}>
                         <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
+                            <button type="submit" class="btn btn-light" value="Submit"><i class="fa fa-search"></i></button>
+                            
                         </div>
                     </div>
                 </form>

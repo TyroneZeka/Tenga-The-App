@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     # "bootstrap4",
     "users.apps.UsersConfig",
     "Products.apps.ProductsConfig",
-    "Dashboard.apps.DashboardConfig",
     "Cart.apps.CartConfig",
     "Orders.apps.OrdersConfig",
     "Checkout.apps.CheckoutConfig",
@@ -138,6 +137,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+CART_SESSION_ID = "cart"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

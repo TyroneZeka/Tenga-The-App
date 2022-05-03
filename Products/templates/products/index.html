@@ -280,17 +280,26 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
                         <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{% static 'img/product-1.jpg' %}" alt="">
+                            {% for image in product.media_product.all %}
+                                {% if image.is_feature %}
+                                    <img class="img-fluid w-100" src="{{ image.image.url }}" alt="">
+                                {% endif %}
+                            {% endfor %}
+                            
                             <div class="product-action">
                                 <a class="btn btn-outline-dark btn-square" href="{% url 'products:single-product-view' product.slug %}"><i class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href="{% url 'products:single-product-view' product.slug %}"><i class="far fa-heart"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">{{product.name| slice:"30"}}</a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>${{product.product__store_price}}</h5><h6 class="text-muted ml-2"><del>${{product.product__retail_price}}</del></h6>
-                            </div>
+                            <a class="h6 text-decoration-none text-truncate" href="{% url 'products:single-product-view' product.slug %}">{{product.name| slice:"30"}}</a>
+                            {% for x in product.product.all %}
+                                {% if x.is_default %}
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    <h5>${{x.store_price}}</h5><h6 class="text-muted ml-2"><del>${{x.retail_price}}</del></h6>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
                             <div class="d-flex align-items-center justify-content-center mb-1">
                                 <small class="fa fa-star text-primary mr-1"></small>
                                 <small class="fa fa-star text-primary mr-1"></small>
@@ -342,21 +351,30 @@
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
         <div class="row px-xl-5">
             <!-- Single Product -->
-            {% for product in products %}
+            {% for product in recent_products %}
                 <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
                         <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{% static 'img/product-1.jpg' %}" alt="">
+                            {% for image in product.media_product.all %}
+                                {% if image.is_feature %}
+                                    <img class="img-fluid w-100" src="{{ image.image.url }}" alt="">
+                                {% endif %}
+                            {% endfor %}
+                            
                             <div class="product-action">
                                 <a class="btn btn-outline-dark btn-square" href="{% url 'products:single-product-view' product.slug %}"><i class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href="{% url 'products:single-product-view' product.slug %}"><i class="far fa-heart"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">{{product.name| slice:"30"}}</a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>${{product.product__store_price}}</h5><h6 class="text-muted ml-2"><del>${{product.product__retail_price}}</del></h6>
-                            </div>
+                            <a class="h6 text-decoration-none text-truncate" href="{% url 'products:single-product-view' product.slug %}">{{product.name| slice:"30"}}</a>
+                            {% for x in product.product.all %}
+                                {% if x.is_default %}
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    <h5>${{x.store_price}}</h5><h6 class="text-muted ml-2"><del>${{x.retail_price}}</del></h6>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
                             <div class="d-flex align-items-center justify-content-center mb-1">
                                 <small class="fa fa-star text-primary mr-1"></small>
                                 <small class="fa fa-star text-primary mr-1"></small>

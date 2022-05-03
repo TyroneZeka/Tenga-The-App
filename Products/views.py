@@ -7,11 +7,16 @@ from . import models, utils
 # Create your views here.
 def homeView(request):
     page = "index"
-    products = utils.searchProduct(request)
-    # print(products)
+    products, search_query = utils.searchProduct(request, "-product__id")
+    recent_products, x = utils.searchProduct(request, "product__id")
+    custom_range, recent_products = utils.paginateProducts(
+        request, recent_products, 8
+    )
     custom_range, products = utils.paginateProducts(request, products, 8)
     context = {
         "products": products,
+        "recent_products": recent_products,
+        "search_query": search_query,
         "custom_range": custom_range,
         "page": page,
     }
@@ -20,7 +25,17 @@ def homeView(request):
 
 
 def search(request):
-    context = {}
+    page = "search"
+    products, search_query = utils.searchProduct(
+        request, "product__store_price"
+    )
+    custom_range, products = utils.paginateProducts(request, products, 20)
+    context = {
+        "products": products,
+        "page": page,
+        "search_query": search_query,
+        "custom_range": custom_range,
+    }
     return render(request, "products/search.html", context)
 
 
@@ -47,7 +62,7 @@ def singleProductView(request, slug):
         .distinct()
         .values("product_attribute__name")
     )
-    related_products = utils.searchProduct(request)
+    related_products = utils.relatedProducts(request, product_category)
     custom_range, related_products = utils.paginateProducts(
         request, related_products, 4
     )
