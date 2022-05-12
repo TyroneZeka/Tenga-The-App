@@ -34,6 +34,10 @@ class Order(models.Model):
     class Meta:
         ordering = ("-created",)
 
+    @property
+    def shipping(self):
+        return self.total_paid
+
     def __str__(self):
         return str(self.created)
 
@@ -49,6 +53,10 @@ class OrderItem(models.Model):
     )
     price = models.DecimalField(max_digits=5, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
+
+    @property
+    def get_total(self):
+        return self.price * self.quantity
 
     def __str__(self) -> str:
         return str(self.id)

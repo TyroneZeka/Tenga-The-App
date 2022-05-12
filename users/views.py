@@ -89,10 +89,14 @@ def loginUser(request):
         # authenticate is checking the users account not the customer account
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            login(request, user)
-            return redirect(
-                request.POST.get("next") if "next" in request.POST else "/"
-            )
+            customer = Customer.objects.get(user=user)
+            if customer.is_active == False:
+                messages.error(request, "Account Not Found!")
+            else:
+                login(request, user)
+                return redirect(
+                    request.POST.get("next") if "next" in request.POST else "/"
+                )
         else:
             messages.error(request, "Username OR password is incorrect")
 
@@ -123,7 +127,6 @@ def edit_details(request):
             request.POST, request.FILES, instance=customer
         )
         if user_form.is_valid():
-            customer = 1
             user_form.save()
 
     else:
@@ -142,7 +145,7 @@ def delete_user(request):
     user.is_active = False
     user.save()
     logout(request)
-    return redirect("users:delete_confirmation")
+    return redirect("products:home-view")
 
 
 @login_required(login_url="users:login")
@@ -161,7 +164,12 @@ def add_address(request):
             address = address_form.save(commit=False)
             address.customer_id = customer
             address.save()
-            return HttpResponseRedirect(reverse("users:addresses"))
+            previous_url = request.META.get("HTTP_REFERER")
+
+            if "delivery_address" in previous_url:
+                return redirect("users:set_default")
+            else:
+                return HttpResponseRedirect(reverse("users:addresses"))
     else:
         address_form = UserAddressForm()
     return render(
@@ -192,7 +200,8 @@ def edit_address(request, id):
 
 @login_required(login_url="users:login")
 def delete_address(request, id):
-    address = Address.objects.filter(pk=id, customer=request.user).delete()
+    customer = Customer.objects.get(user=request.user)
+    address = Address.objects.filter(pk=id, customer_id=customer.id).delete()
     return redirect("users:addresses")
 
 
