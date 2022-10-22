@@ -5,10 +5,18 @@ The site features all the important features of a website including authenticati
 The site also includes a payment structure implemented using PayPal SDK
 
 ## Home Page View
-![mobile version](https://github.com/TyroneZeka/fTenga-The-App/blob/main/home.png?raw=true)
+![Home page View](https://github.com/TyroneZeka/fTenga-The-App/blob/main/2022-05-14 (2).png?raw=true)
 
-## Mobile Version 2
-![mobile version](https://github.com/TyroneZeka/flutter_facebook_ui_responsive/blob/main/mobile2.png?raw=true)
+## Single Product View
+![mobile version](https://github.com/TyroneZeka/flutter_facebook_ui_responsive/blob/main/2022-05-14 (13).png?raw=true)
 
-## Web Version
-![mobile version](https://github.com/TyroneZeka/flutter_facebook_ui_responsive/blob/main/desktop.png?raw=true)
+## Cart View
+![Cart View](https://github.com/TyroneZeka/flutter_facebook_ui_responsive/blob/main/2022-05-14 (14).png?raw=true)
+
+
+## Checkout View
+![Checkout View](https://github.com/TyroneZeka/flutter_facebook_ui_responsive/blob/main/2022-05-14 (15).png?raw=true)
+
+
+## PayPal Payment Confirmation View
+![PayPal](https://github.com/TyroneZeka/flutter_facebook_ui_responsive/blob/main/2022-05-14 (16).png?raw=true)
