@@ -5,7 +5,7 @@ The site features all the important features of a website including authenticati
 The site also includes a payment structure implemented using PayPal SDK
 
 ## Home Page View
-![Home page View](https://github.com/TyroneZeka/fTenga-The-App/blob/main/2022-05-14 (2).png?raw=true)
+![Home page View](https://github.com/TyroneZeka/fTenga-The-App/blob/main/2022-05-14(2).png?raw=true)
 
 ## Single Product View
 ![mobile version](https://github.com/TyroneZeka/flutter_facebook_ui_responsive/blob/main/2022-05-14 (13).png?raw=true)
